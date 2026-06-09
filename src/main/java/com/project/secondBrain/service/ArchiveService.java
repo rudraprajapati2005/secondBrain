@@ -18,4 +18,7 @@ public class ArchiveService {
     public List<Archive> getAllArchives(){
         return archiveRepository.findAll();
     }
+    public List<Archive> searchArchives(String keyword) {
+        return archiveRepository.findByTitleContainingIgnoreCase(keyword);
+    }
 }

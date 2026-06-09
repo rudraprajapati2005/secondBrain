@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "tags")
 @NoArgsConstructor
@@ -24,6 +24,7 @@ private Long id;
 @Column(nullable = false, unique = true)
 private String name;
 
+@JsonIgnore
 @ManyToMany(mappedBy = "tags")
 private Set<Archive> archives = new HashSet<>();
 }

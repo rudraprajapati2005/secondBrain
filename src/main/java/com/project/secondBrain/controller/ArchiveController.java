@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.project.secondBrain.entity.*;
 import java.util.List;
@@ -16,7 +17,7 @@ public class ArchiveController {
     public ArchiveController(ArchiveService archiveService) {
         this.archiveService = archiveService;
     }
-
+    
     @PostMapping
     public Archive createArchive(@RequestBody Archive archive) {
         return archiveService.saveArchive(archive);
@@ -25,7 +26,10 @@ public class ArchiveController {
     @GetMapping
     public List<Archive> getAllArchives() {
         return archiveService.getAllArchives();
+    }  
+
+    @GetMapping("/search")
+    public List<Archive> searchArchives(@RequestParam String keyword) {
+        return archiveService.searchArchives(keyword);
     }
-
-
 }

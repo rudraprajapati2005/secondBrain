@@ -11,6 +11,8 @@ import lombok.AllArgsConstructor;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "archive")
 @NoArgsConstructor
@@ -45,10 +47,12 @@ protected void onCreate() {
 
 }
 
+@JsonIgnore
 @ManyToOne
 @JoinColumn(name = "user_id", nullable = false)
 private User user;
 
+@JsonIgnore
 @ManyToMany
 @JoinTable(
         name = "archive_tags",
