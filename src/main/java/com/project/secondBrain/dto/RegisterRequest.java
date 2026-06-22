@@ -1,15 +1,11 @@
 package com.project.secondBrain.dto;
 
-import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.Builder;
 @Getter
 @Setter
-@Builder
-public class UserResponse {
-    private Long id;
+public class RegisterRequest {
     private String name;
     private String email;
-    private LocalDateTime createdAt;
+    private String password;
 }
