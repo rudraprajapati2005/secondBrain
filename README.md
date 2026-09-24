@@ -6,6 +6,41 @@
 
 secondBrain is an AI-powered personal knowledge and archive system that helps users save web resources, tag them, and later search them using semantic similarity instead of plain keyword matching.
 
+## System Architecture
+
+```mermaid
+flowchart LR
+    U[User / Browser] --> F[Frontend App]
+
+    F -->|Login / Register| S[Spring Boot Backend]
+    F -->|Create Archive| S
+    F -->|Ask Question| S
+
+    S --> SEC[Spring Security + JWT]
+    S --> AUTH[Auth Service]
+    S --> ARCH[Archive Service]
+    S --> AI[AI Search Service]
+    S --> EMB[Embedding Service]
+    S --> G[Groq API]
+
+    ARCH --> DB[(PostgreSQL)]
+    AI --> DB
+    EMB -->|Generate Embedding| DB
+
+    DB --> V[pgvector / Vector Search]
+
+    SEC -->|Validate Token| S
+    ARCH -->|Store metadata + tags| DB
+    AI -->|Similarity Lookup| V
+    V -->|Relevant docs| AI
+    AI -->|Prompt + Context| G
+    G -->|AI Answer| AI
+    AI -->|Response| F
+    F -->|Show results| U
+
+    C[Redis Cache] --> S
+```
+
 ## Overview
 
 This project is a Java Spring Boot backend designed to act like a personal second brain:
