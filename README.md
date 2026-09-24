@@ -1,8 +1,6 @@
 # secondBrain
 
-<p align="center">
-  <img src="assets/secondbrain-banner.svg" alt="secondBrain banner" width="1200" />
-</p>
+
 
 secondBrain is an AI-powered personal knowledge and archive system that helps users save web resources, tag them, and later search them using semantic similarity instead of plain keyword matching.
 
